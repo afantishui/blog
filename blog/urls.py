@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-
+from storm import views
+from django.conf.urls import url, include
 
 urlpatterns = [
 	# 后台管理应用，django自带
     path('admin/', admin.site.urls),
+    # 用户
+    path(r'^accounts/', include('user.urls')),
     # storm 应用
-    path('', include('storm.urls')), 
+    path('', include('storm.urls')),
 ]

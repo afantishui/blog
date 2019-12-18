@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
-import os
+import os,sys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -69,6 +69,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            # 'libraries':{
+            #             'blog_tags':  'storm.templatetags.blog_tags',
+ 
+            # }
         },
     },
 ]
@@ -132,9 +136,23 @@ USE_L10N = True
 
 USE_TZ = True
 
+# # 全文搜索应用配置
+# HAYSTACK_CONNECTIONS = {
+#     'default': {
+#         'ENGINE': 'storm.whoosh_backend.WhooshEngine',  # 选择语言解析器为自己更换的结巴分词
+#         'PATH': os.path.join(BASE_DIR, 'whoosh_index'),  # 保存索引文件的地址，选择主目录下，这个会自动生成
+#     }
+# }
+# # 自动更新索引
+# HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+# 媒体文件收集
+MEDIA_URL = "/media/"   # 媒体文件别名(相对路径) 和 绝对路径
+MEDIA_ROOT = (
+    os.path.join(BASE_DIR, 'media')
+)
 
 # 静态文件 static
 STATIC_URL = '/static/'
