@@ -17,7 +17,15 @@ from django.contrib import admin
 from django.urls import path,include
 from storm import views
 from django.conf.urls import url, include
+from django.contrib.sitemaps.views import sitemap
+from storm.sitemaps import ArticleSitemap, CategorySitemap, TagSitemap
 
+# 网站地图
+sitemaps = {
+    'articles': ArticleSitemap,
+    'tags': TagSitemap,
+    'categories': CategorySitemap
+}
 urlpatterns = [
 	# 后台管理应用，django自带
     path('admin/', admin.site.urls),
@@ -25,4 +33,8 @@ urlpatterns = [
     path(r'^accounts/', include('user.urls')),
     # storm 应用
     path('', include('storm.urls')),
+    # 评论
+    url('^comment/', include('comment.urls')),  # comment
+    # 网站地图
+    url('^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap'),
 ]

@@ -1,11 +1,17 @@
 import markdown
+import time
+from django.conf import settings
 from markdown.extensions.toc import TocExtension
 from django.utils.text import slugify
 from django.shortcuts import render
 from django.views import generic
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .models import Article, BigCategory, Category, Tag
-
+from .models import Article, BigCategory, Category, Tag
+from markdown.extensions.toc import TocExtension  # 锚点的拓展
+from haystack.generic_views import SearchView  # 导入搜索视图
+from haystack.query import SearchQuerySet
 # Create your views here.
 class IndexView(generic.ListView):
     """
@@ -66,3 +72,27 @@ class DetailView(generic.DetailView):
         context = super(DetailView, self).get_context_data(**kwargs)
         context['category'] = self.object.id
         return context
+
+# 喜欢点赞
+@csrf_exempt
+def LoveView(request):
+    data_id = request.POST.get('um_id', '')
+    if data_id:
+        article = Article.objects.get(id=data_id)
+        article.loves += 1
+        article.save()
+        return HttpResponse(article.loves)
+    else:
+        return HttpResponse('error', status=405)
+
+
+
+# 重写搜索视图，可以增加一些额外的参数，且可以重新定义名称
+class MySearchView(SearchView):
+    # 返回搜索结果集
+    context_object_name = 'search_list'
+    # 设置分页
+    paginate_by = getattr(settings, 'BASE_PAGE_BY', None)
+    paginate_orphans = getattr(settings, 'BASE_ORPHANS', 0)
+    # 搜索结果以浏览量排序
+    queryset = SearchQuerySet().order_by('-views')

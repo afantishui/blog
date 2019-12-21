@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import IndexView, AboutView, DetailView
+from .views import IndexView, AboutView, DetailView, LoveView,MySearchView
 
 # template_name 是指定使用的模板文件，传递给视图，进行数据渲染
 app_name = 'storm'
@@ -26,5 +26,9 @@ urlpatterns = [
     url(r'^tag/(?P<tag>.*?)/$', IndexView.as_view(template_name='content.html'), name='tag'),
     # 文章详情页面
     url(r'^article/(?P<slug>.*?)/$', DetailView.as_view(), name='article'),
+    # 全文搜索
+    url(r'^search/$', MySearchView.as_view(), name='search'),
+    # 喜欢
+    url(r'^love/$', LoveView, name='love')
 
 ]

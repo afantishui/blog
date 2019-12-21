@@ -1,12 +1,12 @@
 ﻿{%extends 'base_right.html'%}
-{% load blog_tags static %}
+{% load blog_tags static comment_tags%}
 
-{% block title %}静觅 | StormSha的个人博客{% endblock title %}
+{% block title %}阿凡提 | Afanti的个人博客{% endblock title %}
 {% block description %}
-<meta name="description" content="StormSha的个人博客，记录生活的瞬间，分享学习的心得，感悟生活，留住感动，静静寻觅生活的美好"/>
+<meta name="description" content="Afanti的个人博客，记录生活的瞬间，分享学习的心得，感悟生活，留住感动，静静寻觅生活的美好"/>
 {% endblock description %}
 {% block keywords %}
-<meta name="keywords" content="StormSha,Python,Django,静觅,网络,IT,技术,博客,个人博客"/>
+<meta name="keywords" content="Afanti,Python,Django,静觅,网络,IT,技术,博客,个人博客"/>
 {% endblock keywords %}
 {% block body%}
     <div class="content-wrap">
@@ -39,7 +39,7 @@
             </div>
             <!--登录-->
             <!--目前登录功能只有注册登录其它没必要没做-->
-            <div class="pull-right">
+            <!-- <div class="pull-right">
                 {% if request.session.username|default:'' == '' %}
                     <i class="fa fa-power-off"></i>
                     <a href="{% url 'accounts:login' %}?next={{ request.path }}">登录</a>
@@ -54,7 +54,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-sign-out" aria-hidden="true"></i>
                 <a href="{% url 'accounts:logout' %}?next={{ request.path }}">退出</a>
                 {% endif %}
-            </div>
+            </div> -->
             <!--登录注册结束-->
             <script type="text/javascript" src="/static/js/slider.js"></script>
             <div>

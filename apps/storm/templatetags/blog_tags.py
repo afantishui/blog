@@ -239,6 +239,17 @@ def get_article_next(article_id):
     else:
         return
 
+@register.simple_tag
+def my_highlight(text, q):
+    """自定义标题搜索词高亮函数，忽略大小写"""
+    if len(q) > 1:
+        try:
+            text = re.sub(q, lambda a: '<span class="highlighted">{}</span>'.format(a.group()),
+                          text, flags=re.IGNORECASE)
+            text = mark_safe(text)
+        except:
+            pass
+    return text
 # from django import template
 # from ..models import Article, Category, Tag, Carousel, FriendLink, BigCategory, Activate, Keyword
 # from django.db.models.aggregates import Count

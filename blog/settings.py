@@ -25,7 +25,7 @@ SECRET_KEY = 'p_=b3z#76r_vzfucbh-=3=h=ke9dmo216g+!vhrwwmzkz-$u#x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['47.106.82.186']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,9 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 网站地图应用
+    'django.contrib.sitemaps',
+    'django.contrib.humanize',  # 添加人性化过滤器
     'storm', #添加用户博客应用
     'user', # 用户
-    'imagekit',
+    'comment',  # 评论
+    'haystack',
+    # 'imagekit',
 ]
 
 MIDDLEWARE = [
@@ -134,17 +139,21 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+# USE_TZ是统一全球的时间，不夸时区的应用可以把这个设置为False
+USE_TZ = False
 
-# # 全文搜索应用配置
-# HAYSTACK_CONNECTIONS = {
-#     'default': {
-#         'ENGINE': 'storm.whoosh_backend.WhooshEngine',  # 选择语言解析器为自己更换的结巴分词
-#         'PATH': os.path.join(BASE_DIR, 'whoosh_index'),  # 保存索引文件的地址，选择主目录下，这个会自动生成
-#     }
-# }
-# # 自动更新索引
-# HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+# 全文搜索应用配置
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',  # 选择语言解析器为自己更换的结巴分词
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),  # 保存索引文件的地址，选择主目录下，这个会自动生成
+    }
+}
+# 统一分页设置
+BASE_PAGE_BY = 10
+BASE_ORPHANS = 5
+# 自动更新索引
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
