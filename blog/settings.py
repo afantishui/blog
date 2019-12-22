@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'user', # 用户
     'comment',  # 评论
     'haystack',
+    'DjangoUeditor',
     # 'imagekit',
 ]
 
@@ -165,14 +166,16 @@ MEDIA_ROOT = (
 
 # 静态文件 static
 STATIC_URL = '/static/'
+STATIC_ROOT = 'static' ## 新增行
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    # 注释是为了解决debug设置为false时不能加载静态资源
+    # os.path.join(BASE_DIR, 'static')
 ]
 # 网站描述，用于SEO
-SITE_DESCRIPTION = "StormSha的个人网站，记录生活的瞬间，分享学习的心得，感悟生活，留住感动，静静寻觅生活的美好"
+SITE_DESCRIPTION = "Afanti的个人网站，记录生活的瞬间，分享学习的心得，感悟生活，留住感动，静静寻觅生活的美好"
 
 # 网站关键词，用于SEO
-SITE_KEYWORDS = "StormSha,静觅,网络,IT,技术,博客,Python"
+SITE_KEYWORDS = "Afanti,阿凡提,网络,IT,技术,博客,Python"
 
 # 自定义用户model
 AUTH_USER_MODEL = 'user.Ouser'

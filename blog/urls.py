@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path,include
 from storm import views
 from django.conf.urls import url, include
+from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
 from storm.sitemaps import ArticleSitemap, CategorySitemap, TagSitemap
+from django.views import static
 
 # 网站地图
 sitemaps = {
@@ -29,6 +31,7 @@ sitemaps = {
 urlpatterns = [
 	# 后台管理应用，django自带
     path('admin/', admin.site.urls),
+    path('ueditor/', include('DjangoUeditor.urls')), #添加DjangoUeditor的URL
     # 用户
     path(r'^accounts/', include('user.urls')),
     # storm 应用
@@ -37,4 +40,6 @@ urlpatterns = [
     url('^comment/', include('comment.urls')),  # comment
     # 网站地图
     url('^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap'),
+    url(r'^static/(?P<path>.*)$', static.serve,
+      {'document_root': settings.STATIC_ROOT}, name='static'),
 ]
