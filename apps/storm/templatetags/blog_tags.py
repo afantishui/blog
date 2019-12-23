@@ -198,9 +198,9 @@ def my_highlight(text, q):
             pass
     return text
 
-@register.simple_tag
-def get_comment_count():
-	a =1
+# @register.simple_tag
+# def get_comment_count():
+# 	a =1
 
 # 获取前一篇文章，参数当前文章 ID
 @register.simple_tag

@@ -3486,7 +3486,7 @@ button.btn::-moz-focus-inner,input[type=submit].btn::-moz-focus-inner {
 }
 
 #header {
-	background: none repeat scroll 0 0 rgba(213,100,100,1);
+	background: none repeat scroll 0 0 #000;
 	position: relative
 }
 
@@ -3843,18 +3843,34 @@ button.btn::-moz-focus-inner,input[type=submit].btn::-moz-focus-inner {
 
 .search-expand {
 	display: none;
-	background: #16a085;
+	/*background: #16a085;*/
 	position: absolute;
 	top: 52px;
 	right: 0;
-	width: 360px;
+	width: 286px;
 	-webkit-box-shadow: 0 1px 0 rgba(255,255,255,.1);
 	box-shadow: 0 1px 0 rgba(255,255,255,.1)
 }
 
 .search-expand-inner {
-	border-bottom: 1px solid #d2d6d5;
-	border-left: 1px solid #d2d6d5
+/*	border-bottom: 1px solid #d2d6d5;
+	border-left: 1px solid #d2d6d5*/
+}
+
+.search-expand-inner .input-group-btn {
+	position: absolute;
+	height: 30px;
+	top:0;
+	right: 0;
+}
+
+.search-expand-inner input {
+    height: 30px;
+    box-sizing: border-box;
+}
+
+.search-expand-inner .btn {
+    padding-top: 0
 }
 
 .search-expand .themeform input {

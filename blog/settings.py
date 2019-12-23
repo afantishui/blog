@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p_=b3z#76r_vzfucbh-=3=h=ke9dmo216g+!vhrwwmzkz-$u#x'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -74,6 +74,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'storm.context_processors.settings_info',  # 自定义上下文管理器
             ],
             # 'libraries':{
             #             'blog_tags':  'storm.templatetags.blog_tags',
@@ -166,11 +167,14 @@ MEDIA_ROOT = (
 
 # 静态文件 static
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static' ## 新增行
+#用来存储使用python manage.py collectstatic命令收集起来的静态文件
+STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
+# 静态文件路径,不能与STATIC_ROOT相同
 STATICFILES_DIRS = [
     # 注释是为了解决debug设置为false时不能加载静态资源
-    # os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static')
 ]
+
 # 网站描述，用于SEO
 SITE_DESCRIPTION = "Afanti的个人网站，记录生活的瞬间，分享学习的心得，感悟生活，留住感动，静静寻觅生活的美好"
 

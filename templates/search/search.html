@@ -21,10 +21,10 @@
 
 {% block body %}
     <div class="content-wrap">
-	    <div class="content">
+        <div class="content">
             <header class="archive-header">
                 <h1><i class="fa fa-folder-open"></i>  &nbsp;分类：{{ query }}
-                    <a title="订阅福利专区" target="_blank" href="{% url 'storm:category' resources '' %}"><i class="rss fa fa-rss"></i></a>
+                    <a title="订阅福利专区" target="_blank" href="{% url 'blog:category' resources '' %}"><i class="rss fa fa-rss"></i></a>
                 </h1>
             </header>
             {% for article in search_list %}

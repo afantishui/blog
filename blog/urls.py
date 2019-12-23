@@ -14,13 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include, re_path
 from storm import views
 from django.conf.urls import url, include
 from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
 from storm.sitemaps import ArticleSitemap, CategorySitemap, TagSitemap
 from django.views import static
+from django.views.static import serve
 
 # 网站地图
 sitemaps = {
@@ -33,13 +34,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('ueditor/', include('DjangoUeditor.urls')), #添加DjangoUeditor的URL
     # 用户
-    path(r'^accounts/', include('user.urls')),
+    path('accounts/', include('user.urls')),
     # storm 应用
     path('', include('storm.urls')),
     # 评论
-    url('^comment/', include('comment.urls')),  # comment
+    url('comment/', include('comment.urls')),  # comment
     # 网站地图
-    url('^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap'),
-    url(r'^static/(?P<path>.*)$', static.serve,
-      {'document_root': settings.STATIC_ROOT}, name='static'),
+    url('sitemap\.xml$', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap'),
+    url('static/(?P<path>.*)$', serve,
+      {'document_root': settings.STATIC_ROOT}),
+    re_path('media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}), 
 ]

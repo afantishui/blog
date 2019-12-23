@@ -19,7 +19,7 @@
     </title>
 
     <script>
-        window._deel = {name: '阿凡提',url: '/', ajaxpager: 'on', commenton: 0, roll: [11,12]}
+        window._deel = {name: '静觅',url: '/', ajaxpager: 'on', commenton: 0, roll: [11,12]}
     </script>
 
     <!-- /all in one seo pack -->
@@ -146,7 +146,7 @@
             text-decoration: none;
         }
     </style>
-    <meta name="keywords" content="Afanti,爬虫,Python,C,Java,Django,HTML,JS,教程">
+    <meta name="keywords" content="Afanti,点点,爬虫,Python,C,Java,Django,HTML,JS,教程">
     <meta name="description" content="Afanti的个人主页">
     <script type="text/javascript">
         jQuery(document).ready(function () {
@@ -195,18 +195,18 @@
                         {% if cate %}
                             <li id="menu-item-14"
                                     class="menu-item menu-item-type-taxonomy menu-item-object-category {% if category == big.slug %}current-menu-item {% endif %} menu-item-has-children menu-item-14">
-                                    <a href="{% url 'storm:category' big.slug '' %}">{{ big.name }}</a>
+                                    <a href="{% url 'blog:category' big.slug '' %}">{{ big.name }}</a>
                                         <ul class="sub-menu">
                                             <!--导航条二级分类渲染-->
                                             {% for c in cate %}
-                                                    <li id="menu-item-19" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-19"><a href="{% url 'storm:category'  big.slug   c.slug  %}">{{ c.name }}</a></li>
+                                                    <li id="menu-item-19" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-19"><a href="{% url 'blog:category'  big.slug   c.slug  %}">{{ c.name }}</a></li>
                                             {% endfor %}
                                         </ul>
                             </li>
 
                         <!--无二级分类的一级分类渲染-->
                         {% else %}
-                            <li id="menu-item-851" class="menu-item menu-item-type-post_type menu-item-object-page {% if category == big.slug %}current-menu-item {% endif %} menu-item-851"><a href="{% url 'storm:category' big.slug '' %}">{{ big.name }}</a></li>
+                            <li id="menu-item-851" class="menu-item menu-item-type-post_type menu-item-object-page {% if category == big.slug %}current-menu-item {% endif %} menu-item-851"><a href="{% url 'blog:category' big.slug '' %}">{{ big.name }}</a></li>
                         {% endif %}
                     {% endfor %}
                     <!--导航条结束-->
@@ -216,7 +216,7 @@
                         <div class="toggle-search"><i class="fa fa-search"></i></div>
                         <div class="search-expand" style="display: none;">
                             <div class="search-expand-inner">
-                                <form class="nav-item navbar-form mr-2 py-md-2" role="search" method="get" id="searchform" action="{% url 'storm:search' %}">
+                                <form class="nav-item navbar-form mr-2 py-md-2" role="search" method="get" id="searchform" action="{% url 'blog:search' %}">
                                     <div class="input-group">
                                         <input type="search" name="q" class="form-control rounded-0 f-15" placeholder="搜索" required=True>
                                         <div class="input-group-btn">
@@ -236,14 +236,15 @@
     </header>
 
 <section class="container">
+
     <div class="speedbar">
         <!--登录-->
         <!--目前登录功能只有注册登录其它没必要没做-->
         <div class="pull-right">
             {% if request.session.username|default:'' == '' %}
                     <i class="fa fa-power-off"></i>
-                    <!-- <a href="{% url 'accounts:login' %}?next={{ request.path }}">登录</a> -->
-                    <a href="admin/">登录</a>
+                    <!-- <a href="{% url 'accounts:login' %}?next={{ request.path }}">登录后台</a> -->
+                    <a href="admin/">登录后台</a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <i class="fa fa-user-plus"></i>
                     <a href="{% url 'accounts:register' %}?next={{ request.path }}">注册</a>
             {% else %}
@@ -276,10 +277,10 @@
 <footer class="footer">
     <div class="footer-inner">
         <div class="copyright pull-left">
-            <a href="/" title="阿凡提">Afanti博客丨采用
+            <a href="/" title="静觅">Afanti</a> Blog丨采用
             <a href="http://yusi123.com/"> 欲思 </a>主题丨
             <a href="https://www.djangoproject.com/" title="Django" target="_blank">基于Django构建</a>© 2019丨托管于
-            <a rel="nofollow" target="_blank" href="https://www.aliyun.com/" title="阿里云" target="_blank">阿里云主机</a>|
+            <a rel="nofollow" target="_blank" href="https://www.aliyun.com/" title="阿里云主机" target="_blank">阿里云主机</a>
             <a href="/sitemap.xml" title="Sitemap" target="_blank">网站地图</a>
         </div>
 

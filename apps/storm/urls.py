@@ -2,7 +2,7 @@ from django.conf.urls import url
 from .views import IndexView, AboutView, DetailView, LoveView,MySearchView
 
 # template_name 是指定使用的模板文件，传递给视图，进行数据渲染
-app_name = 'storm'
+app_name = 'blog'
 urlpatterns = [
     # 首页
     url(r'^$', IndexView.as_view(template_name='index.html'), name='index'),  # 主页，自然排序

@@ -50,7 +50,7 @@ class Category(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('storm:category', kwargs={'slug': self.slug, 'bigslug': self.bigcategory.slug})
+        return reverse('blog:category', kwargs={'slug': self.slug, 'bigslug': self.bigcategory.slug})
 
     def get_article_list(self):
         return Article.objects.filter(category=self)
@@ -71,7 +71,7 @@ class Tag(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('storm:tag', kwargs={'tag': self.name})
+        return reverse('blog:tag', kwargs={'tag': self.name})
 
     def get_article_list(self):
         """返回当前标签下所有发表的文章列表"""
@@ -127,7 +127,7 @@ class Article(models.Model):
         return self.title[:20]
 
     def get_absolute_url(self):
-        return reverse('storm:article', kwargs={'slug': self.slug})
+        return reverse('blog:article', kwargs={'slug': self.slug})
 
     def body_to_markdown(self):
         return markdown.markdown(self.body, extensions=[
