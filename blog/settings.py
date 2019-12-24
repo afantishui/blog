@@ -165,6 +165,7 @@ MEDIA_ROOT = (
     os.path.join(BASE_DIR, 'media')
 )
 
+
 # 静态文件 static
 STATIC_URL = '/static/'
 #用来存储使用python manage.py collectstatic命令收集起来的静态文件

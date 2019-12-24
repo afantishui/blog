@@ -7364,6 +7364,10 @@ a.badge-inverse:hover .label-arrow,a.label-inverse:hover .label-arrow {
 	-webkit-box-shadow: inset 0 -1px 0 #3333sf
 }
 
+.github {
+	background: #000000 !important;
+}
+
 .sinaweibo {
 	background: #f78585
 }
@@ -7538,6 +7542,10 @@ a.badge-inverse:hover .label-arrow,a.label-inverse:hover .label-arrow {
 
 span .action-popover .popover-content a:hover {
 	background-color: #7FB4AB
+}
+
+span .action-popover .popover-content .github {
+	background: none repeat scroll 0 0 #000000
 }
 
 span .action-popover .popover-content .sinaweibo {

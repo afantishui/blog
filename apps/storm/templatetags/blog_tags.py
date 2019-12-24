@@ -180,13 +180,6 @@ def get_article_keywords(article):
 
 
 @register.simple_tag
-def get_title(category):
-    a = BigCategory.objects.filter(slug=category)
-    if a:
-        return a[0]
-
-
-@register.simple_tag
 def my_highlight(text, q):
     """自定义标题搜索词高亮函数，忽略大小写"""
     if len(q) > 1:
@@ -250,73 +243,3 @@ def my_highlight(text, q):
         except:
             pass
     return text
-# from django import template
-# from ..models import Article, Category, Tag, Carousel, FriendLink, BigCategory, Activate, Keyword
-# from django.db.models.aggregates import Count
-# from django.utils.html import mark_safe
-# import re
-
-# # 注册自定义标签函数
-# register = template.Library()
-
-
-# # 获取导航条大分类查询集
-# @register.simple_tag
-# def get_bigcategory_list():
-#     """返回大分类列表"""
-#     return BigCategory.objects.all()
-
-
-# # 返回文章分类查询集
-# @register.simple_tag
-# def get_category_list(id):
-#     """返回小分类列表"""
-#     return Category.objects.filter(bigcategory_id=id)
-
-# # 获取滚动的大幻灯片查询集、获取左侧的幻灯片查询集，这两个部分用的图片是一样的
-# @register.simple_tag
-# def get_carousel_index():
-#     return Carousel.objects.filter(number__lte=5)
-
-# # 获取热门排行数据查询集，参数：sort 文章类型， num 数量
-# @register.simple_tag
-# def get_article_list(sort=None, num=None):
-#     """获取指定排序方式和指定数量的文章"""
-#     if sort:
-#         if num:
-#             return Article.objects.order_by(sort)[:num]
-#         return Article.objects.order_by(sort)
-#     if num:
-#         return Article.objects.all()[:num]
-#     return Article.objects.all()
-
-# # 获取归档文章查询集
-# @register.simple_tag
-# def get_data_date():
-#     """获取文章发表的不同月份"""
-#     article_dates = Article.objects.datetimes('create_date', 'month', order='DESC')
-#     return article_dates
-
-# # 文章相关标签函数，和热门文章使用同一个函数
-# @register.simple_tag
-# def get_article_list(sort=None, num=None):
-#     '''获取指定排序方式和指定数量的文章'''
-#     if sort:
-#         if num:
-#             return Article.objects.order_by(sort)[:num]
-#         return Article.objects.order_by(sort)
-#     if num:
-#         return Article.objects.all()[:num]
-#     return Article.objects.all()
-
-# # 获取文章标签信息，参数文章ID
-# @register.simple_tag
-# def get_article_tag(article_id):
-#     return Tag.objects.filter(article=article_id)
-
-# @register.simple_tag
-# def get_title(category):
-#     a = BigCategory.objects.filter(slug=category)
-#     if a:
-#         return a[0]
-

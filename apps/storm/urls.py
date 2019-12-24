@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from .views import IndexView, AboutView, DetailView, LoveView,MySearchView
+from .views import IndexView, AboutView, DetailView, LoveView, MySearchView, MessageView
 
 # template_name 是指定使用的模板文件，传递给视图，进行数据渲染
 app_name = 'blog'
@@ -7,7 +7,7 @@ urlpatterns = [
     # 首页
     url(r'^$', IndexView.as_view(template_name='index.html'), name='index'),  # 主页，自然排序
     # 给我留言
-    # url(r'^category/message/$', MessageView, name='message'),
+    url(r'^category/message/$', MessageView, name='message'),
     # 关于自己
     url(r'^category/about/$', AboutView, name='about'),
     # 赞助作者

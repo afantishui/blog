@@ -24,10 +24,14 @@ class IndexView(generic.ListView):
     # context_object_name属性用于给上下文变量取名（在模板中使用该名字）
     context_object_name = 'articles'
 
+# 关于自己
 def AboutView(request):
         return render(request, 'about.html', {'category': 'about'})
 
-
+# 给我留言
+def MessageView(request):
+    return render(request, 'message.html', {'category':'message'})
+    
 class DetailView(generic.DetailView):
     """
         Django有基于类的视图DetailView,用于显示一个对象的详情页，我们继承它

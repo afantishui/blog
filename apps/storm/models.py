@@ -101,7 +101,7 @@ class Article(models.Model):
     summary = models.TextField('文章摘要', max_length=230, default='文章摘要等同于网页description内容，请务必填写...')
     # 文章内容
     # body = models.TextField(verbose_name='文章内容')
-    body = UEditorField('内容', width=800, height=500, 
+    body = UEditorField(u'内容 ', width=800, height=500, 
                     toolbars="full", imagePath="upimg/", filePath="upfile/",
                     upload_settings={"imageMaxSize": 1204000},
                     settings={}, command=None, blank=True
