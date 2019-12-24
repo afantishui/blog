@@ -95,10 +95,10 @@ sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-            'HOST': '47.106.82.186',
+            'HOST': '*.*.*.186',
             'PORT': '3306',
-            'USER': 'root',
-            'PASSWORD': 'Ljh!@#$824144294',
+            'USER': '***',
+            'PASSWORD': '******',
             'NAME': 'sblog',
             # 避免映射数据库时出现警告
             'OPTIONS': {
