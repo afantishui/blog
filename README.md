@@ -2,7 +2,7 @@
 基于 Python3.6 + Django2.1.7 仿制[stormsha个人博客](https://stormsha.com/)
 
 ## 博客效果
-http://47.106.82.186/
+afanti.fun
 
 ## 功能介绍，相对简单
 
