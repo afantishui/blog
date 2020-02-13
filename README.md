@@ -62,7 +62,7 @@ python manage.py runserver  0.0.0.0:8000
 - [stormSha个人博客](https://stormsha.com/)
 
 ## 搭建过程的问题
-- 1.[后台管理加入富文本](http://47.106.82.186/article/13/)
+- 1.[后台管理加入富文本](http://afanti.fun/article/13/)
 - 待更
 
 ## Nginx+uWSGI 部署
