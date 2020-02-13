@@ -1,5 +1,5 @@
 # 简介
-基于 Python3.6 + Django2.1.7 仿制[stormsha个人博客](https://stormsha.com/)
+基于 Python3.6 + Django2.1.7 
 
 ## 博客效果
 www.afanti.fun
@@ -17,7 +17,7 @@ www.afanti.fun
 - 下载源码
 -  安装依赖
 ```
-pip install -r requriements.txt 
+pip install -r requirements.txt 
 ```
 - 修改blog/setting.py的数据库配置
 
@@ -55,7 +55,7 @@ python manage.py runserver  0.0.0.0:8000
 - 创建超级管理员，然后可以登录管理后台 服务器ip:8000/admin
 
 ```
-- python manage.py createsuperuse
+- python manage.py createsuperuser
 ```
 ## 搭建教程
 
